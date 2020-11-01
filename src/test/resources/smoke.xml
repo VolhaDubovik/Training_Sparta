@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SuperTestSuit">
+
+    <parameter name="name" value="artem"></parameter>
+    <parameter name="age" value="342"></parameter>
+
+    <test name="Store Test">
+        <classes>
+            <class name="by.issoft.tests.MyFirstTest">
+                <methods>
+                    <include name="loginTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
