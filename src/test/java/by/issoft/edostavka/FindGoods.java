@@ -30,10 +30,10 @@ public class FindGoods {
 
         $x("//img[@alt='" + selectedItem + "']").click();
 
-        String actPrice = $x("//span[contains(text(),'" + actualPrice + "')]").getText();
+        //String actPrice = $x("//span[contains(text(),'" + actualPrice + "')]").getText();
 
 
-        Assert.assertEquals(expectedPrice, actPrice, "Goods price is different!");
+        Assert.assertEquals(expectedPrice, actualPrice, "Goods price is different!");
 
     }
 }
