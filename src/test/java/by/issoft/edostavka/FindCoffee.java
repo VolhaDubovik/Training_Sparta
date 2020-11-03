@@ -1,10 +1,8 @@
 package by.issoft.edostavka;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -15,48 +13,65 @@ public class FindCoffee {
     @Test
     public void findCoffeeViaSearchBox() {
         Configuration.timeout = 30000;
+
+        String priceExpected = "54.2";
+
+        //open site
         open("https://e-dostavka.by/");
-        $x("//body/div[@id='body']/div[1]/div[3]/div[2]/div[1]/nav[1]/ul[1]/li[9]/a[1]/i[1]").click();
-        $x("//input[@id='searchtext']").setValue("Кофе молотый «Dallmayr» classic, 250 г.");
-        $x("//body/div[@id='body']/div[1]/div[3]/div[2]/div[1]/nav[1]/ul[1]/li[9]/a[1]/i[1]").click();
-        $x("//body/div[@id='body']/div[1]/div[3]/div[3]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/form[1]").click();
+        String searchLocator = "//div[@class='main_menu__inner']//i[@class='fa fa-search']";
+        //click on search button
+        $x(searchLocator).click();
 
-        String price = $x("//span[contains(text(),'54.2')]").getText();
+        String coffee = "Кофе молотый «Dallmayr» classic, 250 г.";
+        // insert in search field
+        $x("//input[@id='searchtext']").setValue(coffee);
+        //click on search button
+        $x(searchLocator).click();
+        //select found item
+        /*$x("//img[@alt='Кофе молотый «Dallmayr» classic, 250 г.']").click();*/
+        //вариант как вставить строку в строку
+        $x("//img[@alt='" + coffee + "']").click();
 
-        $x("//span[contains(text(),'54.2')]").shouldHave(text("54.2"));
+        //get item price
+        String priceActual = $x("//span[contains(text(),'54.2')]").getText();
 
-        //?? условие, если shouldHave совпадает, то печатаем, иначе ошибку выводить
+        $x("//span[contains(text(),'54.2')]").shouldHave(text(priceExpected));
 
-        System.out.println("Price per kg: " + price);
+        System.out.println("Price per kg: " + priceActual);
+        //сравниваем Actual и Expected, выводим сообщение, если не совпадает
+        Assert.assertEquals(priceActual, priceExpected, "Coffee price is different!");
 
     }
 
-    @Test
-    public void findCoffeeViaDropDownCoffeeName(){
-        Configuration.timeout = 30000;
-        open("https://e-dostavka.by/");
-        $x("//body/div[@id='body']/div[1]/div[3]/div[2]/div[1]/nav[1]/ul[1]/li[9]/a[1]/i[1]").click();
-        $x("//input[@id='searchtext']").setValue("Кофе молотый «Dallmayr» classic, 250 г.");
-        $x("//a[contains(text(),'Кофе молотый «Dallmayr» classic, 250 г.')]").click();
-        $x("//body/div[@id='body']/noindex[2]/div[1]/div[1]/div[1]/div[1]").waitUntil(appears, 10000);
-
-        String price = $x("//span[contains(text(),'54.2')]").getText();
-
-        System.out.println("Price per kg: " + price);
+    @BeforeTest
+    public void sayHello() {
+        System.out.println("Start Test CheckCoffeePrice");
     }
 
-    @Test
-    public void findCoffeeViaDropDownCoffeeImage(){
+    @Test(dataProvider = "dataForCheckCoffeePrice", dataProviderClass = TestDataCoffee.class)
+    public void findCoffeePrice(String value) {
         Configuration.timeout = 30000;
+
         open("https://e-dostavka.by/");
-        $x("//body/div[@id='body']/div[1]/div[3]/div[2]/div[1]/nav[1]/ul[1]/li[9]/a[1]/i[1]").click();
-        $x("//input[@id='searchtext']").setValue("Кофе молотый «Dallmayr» classic, 250 г.");
-        $x("////body/div[@id='body']/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/a[1]/img[1]").click();
-        $x("//body/div[@id='body']/noindex[2]/div[1]/div[1]/div[1]/div[1]").waitUntil(appears, 10000);
+        String searchLocator = "//div[@class='main_menu__inner']//i[@class='fa fa-search']";
 
-        String price = $x("//span[contains(text(),'54.2')]").getText();
+        $x(searchLocator).click();
 
-        System.out.println("Price per kg: " + price);
+        String coffee = "Кофе молотый «Dallmayr» classic, 250 г.";
+
+        $x("//input[@id='searchtext']").setValue(coffee);
+
+        $x(searchLocator).click();
+        //select found item
+
+        $x("//img[@alt='" + coffee + "']").click();
+
+        //get item price
+        String priceActual = $x("//span[contains(text(),'54.2')]").getText();
+
+
+        Assert.assertEquals(value, priceActual, "Coffee price is different!");
+
     }
 
 
