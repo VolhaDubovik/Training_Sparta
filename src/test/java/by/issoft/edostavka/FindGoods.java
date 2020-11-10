@@ -12,6 +12,7 @@ public class FindGoods {
 
     @BeforeTest
     public void sayHello() {
+
         System.out.println("Start Test CheckGoodsPrice");
     }
 
@@ -34,6 +35,5 @@ public class FindGoods {
 
 
         Assert.assertEquals(expectedPrice, actualPrice, "Goods price is different!");
-
     }
 }

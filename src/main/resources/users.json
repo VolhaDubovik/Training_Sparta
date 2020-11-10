@@ -1,0 +1,42 @@
+[
+  {
+    "userName": "artem",
+    "pass": "dgsdgag",
+    "age": 325.3,
+    "isMale": true,
+    "kids": [
+      {
+        "name": "max",
+        "age": 45
+      },
+      {
+        "name": "nick",
+        "age": 32
+      }
+    ],
+    "roles": [
+      "admin",
+      "manager"
+    ]
+  },
+  {
+    "userName": "artem2",
+    "pass": "dgsd2gag",
+    "age": 325.3,
+    "isMale": true,
+    "kids": [
+      {
+        "name": "m2ax",
+        "age": 45
+      },
+      {
+        "name": "ni2ck",
+        "age": 32
+      }
+    ],
+    "roles": [
+      "adm2in",
+      "man2ager"
+    ]
+  }
+]

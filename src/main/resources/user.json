@@ -1,0 +1,20 @@
+{
+  "username": "artem",
+  "pass": "dgsdgag",
+  "age": 325.3,
+  "ismale": true,
+  "kids": [
+
+    {
+      "name": "max",
+      "age": 45
+    },
+    {
+      "name": "nick",
+      "age": 32
+    }
+
+  ],
+  "roles": ["admin", "manager"]
+
+}

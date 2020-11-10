@@ -1,0 +1,30 @@
+<userList>
+    <user>
+        <userName ddd="444" dfs="435fs" >artem</userName>
+        <pass>dasdas</pass>
+        <age>32</age>
+        <isMale>true</isMale>
+        <kids>
+            <child>
+                //1
+            </child>
+            <child>
+                //2
+            </child>
+        </kids>
+    </user>
+    <user>
+        <userName>artem</userName>
+        <pass>dasdas</pass>
+        <age>32</age>
+        <isMale>true</isMale>
+        <kids>
+            <child>
+                //1
+            </child>
+            <child>
+                //2
+            </child>
+        </kids>
+    </user>
+</userList>

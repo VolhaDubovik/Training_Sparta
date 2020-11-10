@@ -1,0 +1,19 @@
+{
+  "dataSet": [
+    {
+      "email": "volha.dubovik@mail.ru",
+      "subject": "Subject1",
+      "textBody": "Hello, world!"
+    },
+    {
+      "email": "olja.benitsevich@gmail.com",
+      "subject": "Subject2",
+      "textBody": "Enjoy learning automation"
+    },
+    {
+      "email": "volha.dubovik@yandex.com",
+      "subject": "Subject3",
+      "textBody": "Want to go on vacation"
+    }
+  ]
+}
