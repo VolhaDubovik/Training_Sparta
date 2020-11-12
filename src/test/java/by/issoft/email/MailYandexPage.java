@@ -1,26 +1,25 @@
 package by.issoft.email;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.appears;
 import static com.codeborne.selenide.Selenide.*;
 
+
 public class MailYandexPage {
 
-    SelenideElement composeButton = $x("//a[contains(@class,'mail-ComposeButton')]");
+    SelenideElement composeButton = $(".mail-ComposeButton");
     SelenideElement newMessagePopup = $x("//div[@class='composeHeader composeHeader_expanded']/div[@class='composeHeader-Text']");
     SelenideElement toField = $x("//div[@class='MultipleAddressesDesktop ComposeRecipients-MultipleAddressField tst-field-to']//div[@class='composeYabbles']");
     SelenideElement subjectField = $x("//input[@name='subject']");
     SelenideElement emailBody = $(".cke_wysiwyg_div");
-    SelenideElement sendButton = $(".ComposeControlPanelButton-Button_action");
+    SelenideElement sendButton = $x("//div[contains(@class,'ComposeSendButton')]/button");
 
     SelenideElement unreadButton = $("a[data-title='Unread'] .mail-LabelList-Item_content");
     SelenideElement refreshButton = $(".mail-ComposeButton-Refresh");
     SelenideElement unreadCheckbox = $(".mail-MessageSnippet-Checkbox-Nb");
 
-    SelenideElement unreadLetter = $x("//body/div[2]/div[5]/div[1]/div[3]/div[3]/div[2]/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/a[1]/div[1]/span[2]");
+    SelenideElement unreadLetter = $x("/descendant::div[contains(@class, 'mail-MessageSnippet-Content')][1]");
     SelenideElement subjectReceivedEmail = $(".mail-Message-Toolbar-Subject");
     SelenideElement bodyReceivedEmail = $(".ns-view-message-body");
 
@@ -36,10 +35,21 @@ public class MailYandexPage {
     }
 
     public void openUnreadLetter(){
-        refreshButton.click();
+        //refreshButton.click();
+        refresh();
         unreadButton.click();
-        //unreadCheckbox.waitUntil(appears, 6000);
+        unreadCheckbox.waitUntil(appears, 4000);
         unreadLetter.click();
+    }
+
+    public String getTitleOfReceivedLetter(){
+        String titleOfReceivedLetter = subjectReceivedEmail.getText();
+        return titleOfReceivedLetter;
+    }
+
+    public String getBodyOfReceivedLetter(){
+        String bodyOfReceivedLetter = bodyReceivedEmail.getText();
+        return bodyOfReceivedLetter;
     }
 
     public boolean isLetterReceivedByTitle(String subject){
