@@ -14,5 +14,4 @@ public class AvatarPopUp {
         logoutButton.click();
     }
 
-
 }

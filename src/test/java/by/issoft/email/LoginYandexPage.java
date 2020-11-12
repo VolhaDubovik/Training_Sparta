@@ -25,7 +25,6 @@ public class LoginYandexPage {
 
     }
 
-
     public boolean isLoginPerformedCorreclty(){
         return mainPage.isDisplayed();
     }

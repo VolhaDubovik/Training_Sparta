@@ -40,7 +40,6 @@ public class MailYandexPage {
         unreadButton.click();
         //unreadCheckbox.waitUntil(appears, 6000);
         unreadLetter.click();
-
     }
 
     public boolean isLetterReceivedByTitle(String subject){

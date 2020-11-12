@@ -115,10 +115,9 @@ public class YandexTest {
         SoftAssert softAssert = new SoftAssert();
 
         //mailYandexPage.bodyReceivedEmail.waitUntil(Condition.appear, 4000);
-
         softAssert.assertTrue(mailYandexPage.isLetterReceivedByBody(message.getTextBody()), "There is no email with such body");
-        //mailYandexPage.subjectReceivedEmail.waitUntil(Condition.appear, 4000);
 
+        //mailYandexPage.subjectReceivedEmail.waitUntil(Condition.appear, 4000);
         softAssert.assertTrue(mailYandexPage.isLetterReceivedByTitle(message.getSubject()), "There is no email with such subject");
 
         softAssert.assertAll();
