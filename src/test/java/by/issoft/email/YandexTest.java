@@ -111,7 +111,7 @@ public class YandexTest {
         //$(withText("Message sent")).shouldBe(Condition.visible);
         mailYandexPage.openUnreadLetter();
 
-        //работает через раз, но всегда что-то падает
+        //работает через раз, но всегда что-то падает, до Assert все работает всегда
         SoftAssert softAssert = new SoftAssert();
 
         //mailYandexPage.bodyReceivedEmail.waitUntil(Condition.appear, 4000);
