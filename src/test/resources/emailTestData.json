@@ -1,17 +1,17 @@
 {
-  "dataSet": [
+  "messages": [
     {
-      "email": "volha.dubovik@mail.ru",
+      "recipient": "volha.dubovik@yandex.com",
       "subject": "Subject1",
       "textBody": "Hello, world!"
     },
     {
-      "email": "olja.benitsevich@gmail.com",
+      "recipient": "volha.dubovik@yandex.com",
       "subject": "Subject2",
       "textBody": "Enjoy learning automation"
     },
     {
-      "email": "volha.dubovik@yandex.com",
+      "recipient": "volha.dubovik@yandex.com",
       "subject": "Subject3",
       "textBody": "Want to go on vacation"
     }
