@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class Dropdown {
+public class DropdownPage {
 
     SelenideElement dropdownField = $("#dropdown");
     SelenideElement dropdownOption1 = $x("//option[.='Option 1']");

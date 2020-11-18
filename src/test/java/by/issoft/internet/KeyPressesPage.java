@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class KeyPresses {
+public class KeyPressesPage {
 
     SelenideElement inputField = $("#target");
     SelenideElement resultLine = $("#result");
@@ -13,6 +13,11 @@ public class KeyPresses {
 
         inputField.setValue(value);
         return resultLine.getText().contains(value);
+    }
+
+    public String inputKeyPressTab(){
+        inputField.pressTab();
+        return resultLine.getOwnText();
     }
 
 
