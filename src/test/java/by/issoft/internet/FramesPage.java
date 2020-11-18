@@ -1,10 +1,8 @@
 package by.issoft.internet;
 
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class FramesPage {
 
@@ -22,7 +20,8 @@ public class FramesPage {
     public void setFrameBodyText(String text){
         iFrameOptionLink.click();
         OkPopUpButton.click();
-        Selenide.switchTo().frame(frameBodyPart);
+        frameBodyPart.waitUntil(Condition.appear, 4000);
+        switchTo().frame(frameBodyPart);
         frameBodyPart.clear();
         frameBodyPart.setValue(text);
 
